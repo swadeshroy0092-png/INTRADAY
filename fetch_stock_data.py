@@ -99,14 +99,14 @@ TICKERS_NS = [t + ".NS" for t in USER_TICKERS]
 # We will use .get() to avoid errors if a key doesn't exist for a ticker
 KEYS_TO_EXTRACT = [
     'longName', 'industry', 'sector', 'fullExchangeName', 'website', 
-    'city', 'marketCap', 'regularMarketTime', 'currentPrice', 'open', 
+    'city', 'zip', 'marketCap', 'regularMarketTime', 'currentPrice', 'open', 
     'dayHigh', 'dayLow', 'volume', 'previousClose', 'regularMarketChange', 
-    'regularMarketChangePercent', 'fiftyTwoWeekLow', 'fiftyTwoWeekHigh', 
-    'fiftyDayAverage', 'twoHundredDayAverage', 'averageVolume', 
+    'regularMarketChangePercent', 'fiftyTwoWeekLow', 'fiftyTwoWeekHigh', 'allTimeHigh', 'allTimeLow', 
+    'fiftyDayAverage', 'fiftyDayAverageChange', 'fiftyDayAverageChangePercent', 'twoHundredDayAverage', 'twoHundredDayAverageChange', 'twoHundredDayAverageChangePercent', 'fiftyTwoWeekLowChange', 'fiftyTwoWeekLowChangePercent', 'fiftyTwoWeekHighChange', 'fiftyTwoWeekHighChangePercent', 'fiftyTwoWeekRange', 'averageVolume', 'averageDailyVolume10Day', 'averageDailyVolume3Month', 'floatShares', 'impliedSharesOutstanding', 
     'sharesOutstanding', 'heldPercentInsiders', 'heldPercentInstitutions',
-    'totalCash', 'totalDebt', 'totalRevenue', 'returnOnEquity', 'profitMargins',
-    'bookValue', 'priceToBook', 'trailingPE', 'forwardPE', 'trailingEps', 
-    'dividendYield', 'payoutRatio', 'lastSplitFactor', 'lastSplitDate', 'beta'
+    'totalCash', 'totalCashPerShare', 'totalDebt', 'totalRevenue', 'revenuePerShare', 'returnOnAssets', 'returnOnEquity', 'grossProfits', 'earningsGrowth', 'revenueGrowth', 'grossMargins', 'ebitdaMargins', 'operatingMargins', 'profitMargins',
+    'bookValue', 'priceToBook', 'enterpriseValue', 'trailingPE', 'forwardPE', 'trailingEps', 'forwardEps',  'dividendRate', 
+    'dividendYield', 'exDividendDate', 'payoutRatio', 'fiveYearAvgDividendYield', 'lastSplitFactor', 'enterpriseToRevenue', 'netIncomeToCommon', 'lastSplitDate', 'beta'
 ]
 
 OUTPUT_CSV = "stock_snapshot_data.csv"
@@ -170,3 +170,4 @@ def fetch_snapshot_data():
 if __name__ == "__main__":
 
     fetch_snapshot_data()
+
