@@ -95,8 +95,7 @@ USER_TICKERS = [
 # 2. Add ".NS" suffix for NSE tickers
 TICKERS_NS = [t + ".NS" for t in USER_TICKERS]
 
-# 3. The data points you want (based on your SBIN example)
-# We will use .get() to avoid errors if a key doesn't exist for a ticker
+# 3. The data points you want
 KEYS_TO_EXTRACT = [
     'longName', 'industry', 'sector', 'fullExchangeName', 'website', 
     'city', 'zip', 'marketCap', 'regularMarketTime', 'currentPrice', 'open', 
@@ -135,7 +134,7 @@ def fetch_snapshot_data():
             all_stock_data.append(stock_data)
 
         except Exception as e:
-            # This will catch errors for invalid tickers (like ETERNAL.NS, TMPV.NS)
+            # This will catch errors for invalid tickers (like SWIGGY.NS, FIRSTCRY.NS)
             # The script will print the error and continue with the next ticker
             print(f"--- FAILED to fetch data for {ticker_symbol}. Error: {e}")
             continue
@@ -153,21 +152,14 @@ def fetch_snapshot_data():
     cols = ['fetchTimestamp', 'ticker'] + [col for col in df.columns if col not in ['fetchTimestamp', 'ticker']]
     df = df[cols]
 
-    # Check if the file already exists
-    file_exists = os.path.exists(OUTPUT_CSV)
+    # --- THIS IS THE CORRECTED SECTION ---
+    print(f"Saving {len(df)} rows to {OUTPUT_CSV} (overwriting file)...")
     
-    if file_exists:
-        print(f"Appending data to existing {OUTPUT_CSV}")
-        # Append to the CSV without writing the header
-        df.to_csv(OUTPUT_CSV, mode='a', header=False, index=False)
-    else:
-        print(f"Creating new file: {OUTPUT_CSV}")
-        # Create the file and write the header
-        df.to_csv(OUTPUT_CSV, mode='w', header=True, index=False)
+    # Use mode='w' to ALWAYS overwrite the file with the new data.
+    # header=True ensures the column names are written every time.
+    df.to_csv(OUTPUT_CSV, mode='w', header=True, index=False)
         
-    print(f"Script finished. Added {len(df)} rows to {OUTPUT_CSV}.")
+    print(f"Script finished. Data saved to {OUTPUT_CSV}.")
 
 if __name__ == "__main__":
-
     fetch_snapshot_data()
-
