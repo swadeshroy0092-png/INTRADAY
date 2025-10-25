@@ -1,9 +1,9 @@
-name: Fetch Stock Data (Every 30 Mins)
+name: Fetch Stock Data (Every 10 Mins)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/10 * * * *'
 
 jobs:
   fetch-and-commit:
