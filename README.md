@@ -503,4 +503,3 @@ ATHERENERG
 JINDALSAW
 CEATLTD
 AGARWALEYE
-<img width="97" height="14501" alt="image" src="https://github.com/user-attachments/assets/8f878814-0df4-40f1-9966-3865f6fe8d1b" />
